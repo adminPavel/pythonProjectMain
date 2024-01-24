@@ -33,8 +33,9 @@ print(os.getcwd() + "\n")
 CLASSES = yaml_load(check_yaml('coco128.yaml'))['names']
 colors = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 operating_system = platform.system()
+path = "Media/My_Face_Video3.mp4"#0#"Media/"cars(720p).mp4
 
-stream = "Media/My_Face_Video3.mp4"
+stream = path
 # stream = "Media\Picture.jpg"
 #stream = 0
 stream_from_file = True
@@ -70,12 +71,12 @@ def draw_bounding_box(img, class_id, confidence, bbox):
 
 def Frame_Read_and_Resize(original_frames_queue: mp.Queue, frames_queue: mp.Queue, video_recording_exist: Value, stream: str, target_resolution_for_model: int, target_crop, program_must_stop: Value, fps: Value):
     print("Process Frame_Read_and_Resize started")
-    cap = cv2.VideoCapture(stream)#"Media\Wedding.mp4"
+    cap = cv2.VideoCapture(path)#"Media\Wedding.mp4"
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps.value = int(cap.get(cv2.CAP_PROP_FPS))
     while not frame_height:
-        cap = cv2.VideoCapture(stream)#"Media\Wedding.mp4"
+        cap = cv2.VideoCapture(path)#"Media\Wedding.mp4"
         frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         fps.value = int(cap.get(cv2.CAP_PROP_FPS))
@@ -100,7 +101,7 @@ def Frame_Read_and_Resize(original_frames_queue: mp.Queue, frames_queue: mp.Queu
                     # cap.release()
                     # break
                     print("Renew VIDEO stream")
-                    cap = cv2.VideoCapture(stream)
+                    cap = cv2.VideoCapture(path)
                     attempts_counter = 0
                     pass
                 attempts_counter = attempts_counter + 1
